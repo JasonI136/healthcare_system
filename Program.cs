@@ -12,23 +12,6 @@ namespace healthcare_system
 {
     internal class Program
     {
-
-        //static void DrawBox(int x, int y, int width, int height)
-        //{
-        //    Console.SetCursorPosition(x, y);
-        //    Console.Write("┌" + new string('─', width) + "┐");
-
-        //    for (int i = 1; i <= height; i++)
-        //    {
-        //        Console.SetCursorPosition(x, y + i);
-        //        Console.Write("│" + new string(' ', width) + "│");
-        //    }
-
-        //    Console.SetCursorPosition(x, y + height + 1);
-        //    Console.Write("└" + new string('─', width) + "┘");
-        //}
-
-
         static void Main(string[] args)
         {
             ControllerService controllerService = new ControllerService(new MenuService());
@@ -36,17 +19,31 @@ namespace healthcare_system
             UserService userService = new UserService();
 
             menuService.DisplayHeader("Login Page");
-            
-            if (controllerService.login()){
-                controllerService.loggedIn();
+
+            while (true) // Infinite loop to keep asking for login until successful
+            {
+                if (controllerService.login())
+                {
+                    controllerService.loggedIn();
+                    break; // Break out of the loop if login is successful
+                }
+                else
+                {
+                    Console.WriteLine("Would you like to try again? (y/n): ");
+                    string response = Console.ReadLine();
+
+                    if (response.ToLower() != "n")
+                    {
+                        Console.Clear(); // Clear the console
+                        menuService.DisplayHeader("Login Page"); // Display the login header
+                    }
+                    else
+                    {
+                        Console.WriteLine("Exiting...");
+                        break; // Break out of the loop if the user chooses not to try again
+                    }
+                }
             }
-
-  
-
-            //DrawBox(0, 0, 20, 10);
-            //Console.ReadLine();
-
-
             Console.ReadLine();
         }
     }
