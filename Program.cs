@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using healthcare_system.model.dto;
 using healthcare_system.service;
+using System.ComponentModel;
 
 namespace healthcare_system
 {
@@ -31,10 +32,16 @@ namespace healthcare_system
         static void Main(string[] args)
         {
             ControllerService controllerService = new ControllerService(new MenuService());
+            MenuService menuService = new MenuService();
+            UserService userService = new UserService();
+
+            menuService.DisplayHeader("Login Page");
+            
             if (controllerService.login()){
                 controllerService.loggedIn();
             }
-            
+
+  
 
             //DrawBox(0, 0, 20, 10);
             //Console.ReadLine();

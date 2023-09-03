@@ -8,6 +8,7 @@ namespace healthcare_system
 {
     public interface IMenuService
     {
+        void DisplayHeader(string page);
         void PatientMenu();
         void DoctorMenu();
         void AdminMenu();

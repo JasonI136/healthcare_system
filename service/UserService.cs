@@ -8,8 +8,41 @@ using System.Threading.Tasks;
 
 namespace healthcare_system.service
 {
-    public class UserService
+    public class UserService : IUserService
     {
+        public UserDTO AuthenticateUser(int userId, string password)
+        {
+            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            string csvFilePath = Path.Combine(projectDirectory, "healthcare_system", "app_data", "user.csv");
+
+            List<UserDTO> users = LoadData(csvFilePath);
+
+            foreach (UserDTO user in users)
+            {
+                if (user.UserId == userId && user.Password == password)
+                {
+                    return user;
+                }
+            }
+
+            return null; // Return null if no matching user is found
+        }
+
+        // This will List ALL users
+        public void ListAllUsers()
+        {
+            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+            string csvFilePath = Path.Combine(projectDirectory, "healthcare_system", "app_data", "user.csv");
+
+            UserService userService = new UserService();
+            List<UserDTO> users = userService.LoadData(csvFilePath);
+
+            foreach (UserDTO user in users)
+            {
+                Console.WriteLine($"UserId: {user.UserId}, Role: {user.Role}, FirstName: {user.FirstName}, LastName: {user.LastName}, Email: {user.Email}, Password: {user.Password}");
+            }
+        }
+        
         // This will load all data from the CSV
         public List<UserDTO> LoadData(string csvFilePath)
         {
@@ -46,18 +79,6 @@ namespace healthcare_system.service
             return userList;
         }
 
-        // This will List ALL users
-        public void ListAllUsers() {
-            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-            string csvFilePath = Path.Combine(projectDirectory, "healthcare_system", "app_data", "user.csv");
-
-            UserService userService = new UserService();
-            List<UserDTO> users = userService.LoadData(csvFilePath);
-
-            foreach (UserDTO user in users)
-            {
-                Console.WriteLine($"UserId: {user.UserId}, Role: {user.Role}, FirstName: {user.FirstName}, LastName: {user.LastName}, Email: {user.Email}, Password: {user.Password}");
-            }
-        }
+       
     }
 }

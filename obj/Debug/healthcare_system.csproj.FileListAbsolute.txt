@@ -6,3 +6,11 @@ C:\Users\Jason\OneDrive\Documents\GitHub\dotnet-assignment1\healthcare_system\ob
 C:\Users\Jason\OneDrive\Documents\GitHub\dotnet-assignment1\healthcare_system\obj\Debug\healthcare_system.csproj.CoreCompileInputs.cache
 C:\Users\Jason\OneDrive\Documents\GitHub\dotnet-assignment1\healthcare_system\obj\Debug\healthcare_system.exe
 C:\Users\Jason\OneDrive\Documents\GitHub\dotnet-assignment1\healthcare_system\obj\Debug\healthcare_system.pdb
+C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\bin\Debug\healthcare_system.exe.config
+C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\bin\Debug\healthcare_system.exe
+C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\bin\Debug\healthcare_system.pdb
+C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\obj\Debug\healthcare_system.csproj.AssemblyReference.cache
+C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\obj\Debug\healthcare_system.csproj.SuggestedBindingRedirects.cache
+C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\obj\Debug\healthcare_system.csproj.CoreCompileInputs.cache
+C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\obj\Debug\healthcare_system.exe
+C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\obj\Debug\healthcare_system.pdb
