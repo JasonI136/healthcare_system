@@ -1,0 +1,4 @@
+﻿user_id,role,firstname,lastname,email,password
+10000,doctor,John,Doe,johndoe@gmail.com,1234
+20000,patient,Mary,Sue,marysue@doctor.com,1234
+90000,admin,admin,root,admin@system.com,1234
