@@ -108,7 +108,7 @@ namespace healthcare_system.service
             if (authenticatedUser != null)
             {
                 Console.WriteLine();
-                Console.WriteLine("Successful Login Welcome", authenticatedUser.FirstName,  " ", authenticatedUser.LastName);
+                Console.WriteLine("Successful Login Welcome, " + authenticatedUser.FirstName +  " " + authenticatedUser.LastName);
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey();  // This will pause until a key is pressed
                 return true;
@@ -133,10 +133,11 @@ namespace healthcare_system.service
                 case "doctor":
                     menuService.DoctorMenu();
                     userOption = getMenuOption();
-                    doctorService.processUserInput(userOption);
+                    doctorService.processUserInput(userOption, authenticatedUser.UserId);
                     break;
                 case "patient":
                     menuService.PatientMenu();
+                    userOption = getMenuOption();
                     break;
                 case "admin":
                     menuService.AdminMenu();

@@ -71,7 +71,7 @@ namespace healthcare_system.service
             DisplayHeader("Doctor Main Menu");
 
             // List All Doctor Options
-            Console.WriteLine("Welcome to Hospital Management System: Dr ");
+            Console.WriteLine("Welcome to Hospital Management System");
             Console.WriteLine();
 
             Console.WriteLine("Please Select an Option:");

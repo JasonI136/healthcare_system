@@ -10,12 +10,17 @@ namespace healthcare_system.service
 {
     public class UserService : IUserService
     {
+        private string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+        private string csvFilePath;
+
+        public UserService()
+        {
+            csvFilePath = Path.Combine(projectDirectory, "healthcare_system", "app_data", "user.csv");
+        }
+
         public UserDTO AuthenticateUser(int userId, string password)
         {
-            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-            string csvFilePath = Path.Combine(projectDirectory, "healthcare_system", "app_data", "user.csv");
-
-            List<UserDTO> users = LoadData(csvFilePath);
+            List<UserDTO> users = LoadData();
 
             foreach (UserDTO user in users)
             {
@@ -28,23 +33,22 @@ namespace healthcare_system.service
             return null; // Return null if no matching user is found
         }
 
-        // This will List ALL users
         public void ListAllUsers()
         {
-            string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
-            string csvFilePath = Path.Combine(projectDirectory, "healthcare_system", "app_data", "user.csv");
-
-            UserService userService = new UserService();
-            List<UserDTO> users = userService.LoadData(csvFilePath);
+            List<UserDTO> users = LoadData();
 
             foreach (UserDTO user in users)
             {
                 Console.WriteLine($"UserId: {user.UserId}, Role: {user.Role}, FirstName: {user.FirstName}, LastName: {user.LastName}, Email: {user.Email}, Password: {user.Password}");
             }
         }
-        
-        // This will load all data from the CSV
-        public List<UserDTO> LoadData(string csvFilePath)
+
+        public List<UserDTO> LoadData()
+        {
+            return LoadUserList();
+        }
+
+        public List<UserDTO> LoadUserList()
         {
             List<UserDTO> userList = new List<UserDTO>();
 
@@ -78,7 +82,5 @@ namespace healthcare_system.service
 
             return userList;
         }
-
-       
     }
 }

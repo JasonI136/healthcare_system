@@ -15,10 +15,11 @@ namespace healthcare_system
         static void Main(string[] args)
         {
             // Initialize services
-            ControllerService controllerService = new ControllerService(new MenuService(), new DoctorService(), new PatientService(), new AdminService());
             MenuService menuService = new MenuService();
             UserService userService = new UserService();
+            ControllerService controllerService = new ControllerService(new MenuService(), new DoctorService(menuService,userService), new PatientService(), new AdminService());
             
+
             // Initial Check
             controllerService.CheckIfLoggedIn();
 
