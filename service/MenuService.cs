@@ -11,14 +11,10 @@ namespace healthcare_system.service
         // This will create the console header box with the page title
         public void DisplayHeader(string page)
         {
-            // Clear console for fresh start
             Console.Clear();
 
-            // Define the header and set a predefined box width
             string header = "Health Care System v1";
-            int boxWidth = 50;  // You can adjust this value to make the box longer or shorter
-
-            // Create horizontal border and divider
+            int boxWidth = 50;
             string horizontalBorder = new string('─', boxWidth);
             string divider = new string('=', boxWidth);
 
@@ -74,7 +70,7 @@ namespace healthcare_system.service
             Console.Clear();
             DisplayHeader("Doctor Main Menu");
 
-            // List All Patient Options
+            // List All Doctor Options
             Console.WriteLine("Welcome to Hospital Management System: Dr ");
             Console.WriteLine();
 
@@ -91,15 +87,15 @@ namespace healthcare_system.service
             Console.WriteLine("9. Exit to Login");
             Console.WriteLine("0. Exit System");
             Console.WriteLine();
-
-            
+   
         }
+        
         public void AdminMenu()
         {
             Console.Clear();
             DisplayHeader("⚠︎ Admin Menu");
 
-            // List All Patient Options
+            // List All Admin Options
             Console.WriteLine("ADMIN MENU");
             Console.WriteLine();
 

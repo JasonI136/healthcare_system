@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace healthcare_system.service
 {
-    public class AdminService
+    public class AdminService : IAdminService
     {
     }
 }

@@ -8,6 +8,11 @@ namespace healthcare_system.service
 {
     public class DoctorService : IDoctorService
     {
+        public void processUserInput(int userInput) 
+        {
+            Console.Write("HELLO HELLO");
+            Console.ReadLine();
+        }
         public void DisplayMenu()
         {
             throw new NotImplementedException();

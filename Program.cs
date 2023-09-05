@@ -14,36 +14,14 @@ namespace healthcare_system
     {
         static void Main(string[] args)
         {
-            ControllerService controllerService = new ControllerService(new MenuService());
+            // Initialize services
+            ControllerService controllerService = new ControllerService(new MenuService(), new DoctorService(), new PatientService(), new AdminService());
             MenuService menuService = new MenuService();
             UserService userService = new UserService();
+            
+            // Initial Check
+            controllerService.CheckIfLoggedIn();
 
-            menuService.DisplayHeader("Login Page");
-
-            while (true) // Infinite loop to keep asking for login until successful
-            {
-                if (controllerService.login())
-                {
-                    controllerService.loggedIn();
-                    break; // Break out of the loop if login is successful
-                }
-                else
-                {
-                    Console.WriteLine("Would you like to try again? (y/n): ");
-                    string response = Console.ReadLine();
-
-                    if (response.ToLower() != "n")
-                    {
-                        Console.Clear(); // Clear the console
-                        menuService.DisplayHeader("Login Page"); // Display the login header
-                    }
-                    else
-                    {
-                        Console.WriteLine("Exiting...");
-                        break; // Break out of the loop if the user chooses not to try again
-                    }
-                }
-            }
             Console.ReadLine();
         }
     }

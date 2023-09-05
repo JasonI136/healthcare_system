@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace healthcare_system.service
 {
-    public class PatientService
+    public class PatientService : IPatientService
     {
+        
     }
 }

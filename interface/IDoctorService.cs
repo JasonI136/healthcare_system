@@ -8,6 +8,8 @@ namespace healthcare_system
 {
     public interface IDoctorService
     {
-        
+        void processUserInput(int userInput);
+
+
     }
 }
