@@ -13,7 +13,7 @@ namespace healthcare_system
         void listPatientDetails(int UserId);
         void listDoctorDetails(int UserId);
         void listAllAppointments(int UserId);
-        void bookAppointment();
+        void bookAppointment(int UserId);
         
     }
 }

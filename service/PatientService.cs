@@ -37,7 +37,7 @@ namespace healthcare_system.service
                     listAllAppointments(UserId);
                     break;
                 case 4:
-                    bookAppointment();
+                    bookAppointment(UserId);
                     break;
                 default:
                     Console.WriteLine("Invalid option selected.");
@@ -87,7 +87,6 @@ namespace healthcare_system.service
 
         /* Option 2: List My Doctor Details
         * Lists all the fields of the doctor that is registered with the currently logged in patient
-        * TODO: INCOMPLETE WORK
         */
         public void listDoctorDetails(int signedInId)
         {
@@ -108,8 +107,20 @@ namespace healthcare_system.service
                 {
                     menuService.DisplayHeader("My Doctor Details");
 
-                    // Display doctor details using the ToString method in the DoctorDTO class
-                    Console.WriteLine(registeredDoctor.user.FirstName);
+                    // Display table header
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("{0,-10} {1,-30} {2,-20} {3,-20} {4,-20} {5,-30}", "UserId", "Full Name", "Email", "Phone", "Address", "Description");
+                    Console.WriteLine(new string('-', 120));
+
+                    // Display doctor details in a row
+                    Console.WriteLine("{0,-10} {1,-30} {2,-20} {3,-20} {4,-20} {5,-30}",
+                                      registeredDoctor.user.UserId,
+                                      "Dr " + registeredDoctor.user.FirstName + " " + registeredDoctor.user.LastName,
+                                      registeredDoctor.user.Email,
+                                      registeredDoctor.user.Phone,
+                                      registeredDoctor.user.Address,
+                                      registeredDoctor.user.Description);
                 }
                 else
                 {
@@ -125,21 +136,106 @@ namespace healthcare_system.service
             Console.ReadKey();
         }
 
+
+
+
+
         /* Option 3: List All Appointments
         * Lists the details of all past appointments involving the currently logged in patient
         */
         public void listAllAppointments(int signedInId) 
-        { 
-        
+        {
+            Console.Clear();
+
+            // Load the list of users from the user service
+            List<UserDTO> userList = userService.LoadUserList();
+            DoctorDTO currentDoctor = new DoctorDTO() { user = userList.Find(u => u.UserId == signedInId) };
+
+            menuService.DisplayHeader($"Listing Appointments: {currentDoctor.user.FirstName} {currentDoctor.user.LastName}");
+
+            List<AppointmentDTO> appointmentsList = LoadAppointmentsList(signedInId, userList);
+
+            // Display table header
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("{0,-30} {1,-30} {2,-50}", "Doctor Name", "Patient Name", "Appointment Description");
+            Console.WriteLine(new string('-', 110));
+
+            foreach (var appointment in appointmentsList)
+            {
+                string doctorFullName = $"Dr {appointment.doctor.user.FirstName} {appointment.doctor.user.LastName}";
+                string patientFullName = $"{appointment.patient.user.FirstName} {appointment.patient.user.LastName}";
+
+                Console.WriteLine("{0,-30} {1,-30} {2,-50}",
+                                  doctorFullName,
+                                  patientFullName,
+                                  appointment.description);
+            }
+
+            Console.WriteLine("\nPress any key to return to the menu.");
+            Console.ReadLine();
         }
 
         /* Option 4: Book Appointment
         * Prompts the user for all the necessary information to generate a new appointment
         */
-        public void bookAppointment() 
-        { 
-        
+        public void bookAppointment(int signedInId)
+        {
+            Console.Clear();
+
+            // Load the list of users from the user service
+            List<UserDTO> userList = userService.LoadUserList();
+
+            // Get the list of all doctors
+            var doctorList = userList.Where(u => u.Role.ToLower() == "doctor").ToList();
+
+            if (doctorList.Count == 0)
+            {
+                Console.WriteLine("No doctors available.");
+                return;
+            }
+
+            // Display all doctors
+            Console.WriteLine("{0,-10} {1,-30} {2,-20}", "Doctor ID", "Doctor Name", "Email");
+            Console.WriteLine(new string('-', 60));
+
+            foreach (var doctor in doctorList)
+            {
+                Console.WriteLine("{0,-10} {1,-30} {2,-20}", doctor.UserId, $"Dr. {doctor.FirstName} {doctor.LastName}", doctor.Email);
+            }
+
+            // Ask for doctor ID input
+            Console.WriteLine("\nPlease enter the ID number of the doctor you wish to book an appointment with:");
+            int doctorIdInput;
+            while (true)
+            {
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out doctorIdInput) && doctorList.Any(d => d.UserId == doctorIdInput))
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ID. Please try again:");
+                }
+            }
+
+            // Get current date
+            string currentDate = DateTime.Now.ToString("dd/MM/yyyy");
+
+            // Prepare the appointment data
+            string appointmentData = $"{doctorIdInput},{signedInId},{currentDate},\"Booked Appointment\"";
+
+            // Write to appointments.csv file
+            using (StreamWriter sw = File.AppendText(appointmentsCSVFile))
+            {
+                sw.WriteLine(appointmentData);
+            }
+
+            Console.WriteLine("Appointment booked successfully. Press any key to return to the menu.");
+            Console.ReadKey();
         }
+
 
         /* Function for Loading Appointments List based off currently signed in */
         public List<AppointmentDTO> LoadAppointmentsList(int signedInId, List<UserDTO> userList)

@@ -62,6 +62,8 @@ namespace healthcare_system.service
             UserDTO user = userList.Find(u => u.UserId == signedInId);
             if (user != null)
             {
+                Console.WriteLine();
+                Console.WriteLine();
                 Console.WriteLine("{0,-10} {1,-10} {2,-20} {3,-20} {4,-30}", "UserId", "Role", "First Name", "Last Name", "Email");
                 Console.WriteLine(new string('-', 90));
                 Console.WriteLine("{0,-10} {1,-10} {2,-20} {3,-20} {4,-30}", user.UserId, user.Role, user.FirstName, user.LastName, user.Email);
@@ -90,6 +92,8 @@ namespace healthcare_system.service
             List<AppointmentDTO> appointmentsList = LoadAppointmentsList(signedInId, userList);
 
             // Display table header
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("{0,-30} {1,-30} {2,-30} {3,-15}", "Patient Full Name", "Email Address", "Phone Number", "Address");
             Console.WriteLine(new string('-', 155));
 
@@ -122,6 +126,8 @@ namespace healthcare_system.service
             List<AppointmentDTO> appointmentsList = LoadAppointmentsList(signedInId, userList);
 
             // Display table header
+            Console.WriteLine();
+            Console.WriteLine();
             Console.WriteLine("{0,-30} {1,-30} {2,-50}", "Appointment Date", "Patient Full Name", "Appointment Description");
             Console.WriteLine(new string('-', 110));
 
@@ -171,6 +177,8 @@ namespace healthcare_system.service
                     {
                         if (patient.Role.ToLower() == "patient")
                         {
+                            Console.WriteLine();
+                            Console.WriteLine();
                             // Display table header
                             Console.WriteLine("{0,-30} {1,-30} {2,-30} {3,-15}", "Patient Full Name", "Email Address", "Phone Number", "Address");
                             Console.WriteLine(new string('-', 105));
