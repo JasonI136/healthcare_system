@@ -149,6 +149,7 @@ namespace healthcare_system.service
                     Console.WriteLine();
                     Console.WriteLine();
                     userOption = getMenuOption();
+                    patientService.processUserInput(userOption, authenticatedUser.UserId);
                     break;
                 case "admin":
                     menuService.AdminMenu();

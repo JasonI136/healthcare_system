@@ -16,6 +16,7 @@ namespace healthcare_system.service
         private string appointmentsCSVFile;
         private string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
 
+        // Initiate Constructor
         public DoctorService(IMenuService menuService, IUserService userService)
         {
             this.menuService = menuService;
