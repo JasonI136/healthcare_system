@@ -72,7 +72,10 @@ namespace healthcare_system.service
                         FirstName = fields[2],
                         LastName = fields[3],
                         Email = fields[4],
-                        Password = fields[5]
+                        Password = fields[5],
+                        Address = fields[6],
+                        Phone = fields[7],
+                        Description = fields[8]
                     };
 
                     // Add the UserDTO object to the list

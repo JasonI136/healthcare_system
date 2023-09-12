@@ -17,9 +17,8 @@ namespace healthcare_system
             // Initialize services
             MenuService menuService = new MenuService();
             UserService userService = new UserService();
-            ControllerService controllerService = new ControllerService(new MenuService(), new DoctorService(menuService,userService), new PatientService(), new AdminService());
+            ControllerService controllerService = new ControllerService(menuService, new DoctorService(menuService,userService), new PatientService(), new AdminService());
             
-
             // Initial Check
             controllerService.CheckIfLoggedIn();
 

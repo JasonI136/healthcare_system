@@ -10,9 +10,9 @@ namespace healthcare_system
     {
         void processUserInput(int userInput, int UserId);
         void listDoctorDetails(int userInput);
-        void listPatients();
-        void listAppointments();
-        void checkPatient();
-        void listAppointmentWithPatient();
+        void listPatients(int userInput);
+        void listAppointments(int userInput);
+        void checkPatient(int userInput);
+        void listAppointmentWithPatient(int userInput);
     }
 }

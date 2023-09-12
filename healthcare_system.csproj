@@ -49,6 +49,9 @@
     <Compile Include="interface\IMenuService.cs" />
     <Compile Include="interface\IPatientService.cs" />
     <Compile Include="interface\IUserService.cs" />
+    <Compile Include="model\dto\AppointmentDTO.cs" />
+    <Compile Include="model\dto\DoctorDTO.cs" />
+    <Compile Include="model\dto\PatientDTO.cs" />
     <Compile Include="model\dto\UserDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

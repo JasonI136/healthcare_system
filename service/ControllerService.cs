@@ -29,12 +29,17 @@ namespace healthcare_system.service
 
         public void CheckIfLoggedIn()
         {
+            Boolean isUserLoggedIn = false;
+
             while (true) // Infinite loop to keep asking for login until successful
             {
-                if (login())
+                // This will check if user is logged in, if isUserLoggedIn is FALSE; execute the login function
+                // HOWEVER: if isUserLoggedIn is TRUE, early return and do not execute login function
+                isUserLoggedIn = isUserLoggedIn || login(); 
+
+                if (isUserLoggedIn)
                 {
                     returnToMenu();
-                    break; // Break out of the loop if login is successful
                 }
                 else
                 {
@@ -132,15 +137,25 @@ namespace healthcare_system.service
             {
                 case "doctor":
                     menuService.DoctorMenu();
+                    Console.WriteLine("Logged in as: " + authenticatedUser.FirstName + " " + authenticatedUser.LastName);
+                    Console.WriteLine();
+                    Console.WriteLine();
                     userOption = getMenuOption();
                     doctorService.processUserInput(userOption, authenticatedUser.UserId);
                     break;
                 case "patient":
                     menuService.PatientMenu();
+                    Console.WriteLine("Logged in as: " + authenticatedUser.FirstName + " " + authenticatedUser.LastName);
+                    Console.WriteLine();
+                    Console.WriteLine();
                     userOption = getMenuOption();
                     break;
                 case "admin":
                     menuService.AdminMenu();
+                    Console.WriteLine("Logged in as: " + authenticatedUser.FirstName + " " + authenticatedUser.LastName);
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    userOption = getMenuOption();
                     break;
                 default:
                     Console.WriteLine("Invalid Role");
