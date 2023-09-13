@@ -14,3 +14,10 @@ C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\obj\Debug\healthcare_
 C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\obj\Debug\healthcare_system.csproj.CoreCompileInputs.cache
 C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\obj\Debug\healthcare_system.exe
 C:\Users\Jason\OneDrive\Documents\GitHub\healthcare_system\obj\Debug\healthcare_system.pdb
+\\Mac\Home\Documents\Github Projects\healthcare_system\bin\Debug\healthcare_system.exe.config
+\\Mac\Home\Documents\Github Projects\healthcare_system\bin\Debug\healthcare_system.exe
+\\Mac\Home\Documents\Github Projects\healthcare_system\bin\Debug\healthcare_system.pdb
+\\Mac\Home\Documents\Github Projects\healthcare_system\obj\Debug\healthcare_system.csproj.AssemblyReference.cache
+\\Mac\Home\Documents\Github Projects\healthcare_system\obj\Debug\healthcare_system.csproj.CoreCompileInputs.cache
+\\Mac\Home\Documents\Github Projects\healthcare_system\obj\Debug\healthcare_system.exe
+\\Mac\Home\Documents\Github Projects\healthcare_system\obj\Debug\healthcare_system.pdb

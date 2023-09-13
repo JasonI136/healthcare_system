@@ -157,6 +157,7 @@ namespace healthcare_system.service
                     Console.WriteLine();
                     Console.WriteLine();
                     userOption = getMenuOption();
+                    adminService.processUserInput(userOption, authenticatedUser.UserId);
                     break;
                 default:
                     Console.WriteLine("Invalid Role");
