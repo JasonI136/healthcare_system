@@ -238,8 +238,9 @@ namespace healthcare_system.service
 
         public void addDoctor(int signedInId)
         {
-
+            
         }
+
         public void addPatient(int signedInId)
         {
 
