@@ -13,6 +13,7 @@ namespace healthcare_system
         void ListAllUsers();
         List<UserDTO> LoadData();
         List<UserDTO> LoadUserList();
+        void addUser(int role);
 
         
     }

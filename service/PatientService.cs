@@ -1,6 +1,7 @@
 ﻿using healthcare_system.model.dto;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -220,7 +221,6 @@ namespace healthcare_system.service
                 }
             }
 
-            // Get current date
             string currentDate = DateTime.Now.ToString("dd/MM/yyyy");
 
             // Prepare the appointment data
@@ -266,7 +266,7 @@ namespace healthcare_system.service
                             {
                                 user = userList.Find(u => u.UserId == int.Parse(fields[1]))
                             },
-                            date = DateTime.Parse(fields[2]),
+                            date = DateTime.ParseExact(fields[2], "d/m/yyyy", CultureInfo.InvariantCulture),
                             description = fields[3]
                         };
 

@@ -85,5 +85,10 @@ namespace healthcare_system.service
 
             return userList;
         }
+
+        public void addUser(int role)
+        {
+            
+        }
     }
 }

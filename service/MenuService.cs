@@ -93,7 +93,7 @@ namespace healthcare_system.service
         public void AdminMenu()
         {
             Console.Clear();
-            DisplayHeader("⚠︎ Admin Menu");
+            DisplayHeader("// Admin Menu //");
 
             // List All Admin Options
             Console.WriteLine("ADMIN MENU");
