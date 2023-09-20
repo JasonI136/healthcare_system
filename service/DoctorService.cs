@@ -25,6 +25,7 @@ namespace healthcare_system.service
             this.appointmentsCSVFile = Path.Combine(projectDirectory, "healthcare_system", "app_data", "appointments.csv");
         }
 
+        // This function will retrieve the user option and continue it to the appropriate function
         public void processUserInput(int userInput, int UserId)
         {
             switch (userInput)
@@ -58,9 +59,10 @@ namespace healthcare_system.service
             Console.Clear();
             menuService.DisplayHeader("List Doctor Details:");
 
+            // Load and find user
             List<UserDTO> userList = userService.LoadUserList();
-
             UserDTO user = userList.Find(u => u.UserId == signedInId);
+            
             if (user != null)
             {
                 Console.WriteLine();
@@ -84,7 +86,7 @@ namespace healthcare_system.service
         {
             Console.Clear();
 
-            // Load the list of users from the user service
+            // Load and find user
             List<UserDTO> userList = userService.LoadUserList();
             DoctorDTO currentDoctor = new DoctorDTO() { user = userList.Find(u => u.UserId == signedInId) };
 
@@ -118,7 +120,7 @@ namespace healthcare_system.service
         {
             Console.Clear();
 
-            // Load the list of users from the user service
+            // Load and find user
             List<UserDTO> userList = userService.LoadUserList();
             DoctorDTO currentDoctor = new DoctorDTO() { user = userList.Find(u => u.UserId == signedInId) };
 
@@ -154,7 +156,7 @@ namespace healthcare_system.service
             {
                 Console.Clear();
 
-                // Load the list of users from the user service
+                // Load and find user
                 List<UserDTO> userList = userService.LoadUserList();
                 DoctorDTO currentDoctor = new DoctorDTO() { user = userList.Find(u => u.UserId == signedInId) };
 
@@ -223,7 +225,7 @@ namespace healthcare_system.service
             {
                 Console.Clear();
 
-                // Load the list of users from the user service
+                // Load and find user
                 List<UserDTO> userList = userService.LoadUserList();
                 DoctorDTO currentDoctor = new DoctorDTO() { user = userList.Find(u => u.UserId == signedInId) };
 
@@ -288,7 +290,6 @@ namespace healthcare_system.service
             }
         }
 
-
         /* Function for Loading Appointments List based off currently signed in */
         public List<AppointmentDTO> LoadAppointmentsList(int signedInId, List<UserDTO> userList)
         {
@@ -330,7 +331,5 @@ namespace healthcare_system.service
 
             return appointmentsList;
         }
-
-
     }
 }
