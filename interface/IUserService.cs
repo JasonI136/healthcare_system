@@ -10,12 +10,7 @@ namespace healthcare_system
     public interface IUserService
     {
         UserDTO AuthenticateUser(int userId, string password);
-        void ListAllUsers();
-        List<UserDTO> LoadData();
         List<UserDTO> LoadUserList();
-        void addUser(int role);
-
-        
     }
 }
 

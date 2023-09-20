@@ -13,14 +13,16 @@ namespace healthcare_system.service
         private string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
         private string csvFilePath;
 
+        // Initiate Constructor
         public UserService()
         {
             csvFilePath = Path.Combine(projectDirectory, "healthcare_system", "app_data", "user.csv");
         }
 
+        // authenticateUser() is used to make sure that the user is signed in and will return the users role
         public UserDTO AuthenticateUser(int userId, string password)
         {
-            List<UserDTO> users = LoadData();
+            List<UserDTO> users = LoadUserList();
 
             foreach (UserDTO user in users)
             {
@@ -33,21 +35,7 @@ namespace healthcare_system.service
             return null; // Return null if no matching user is found
         }
 
-        public void ListAllUsers()
-        {
-            List<UserDTO> users = LoadData();
-
-            foreach (UserDTO user in users)
-            {
-                Console.WriteLine($"UserId: {user.UserId}, Role: {user.Role}, FirstName: {user.FirstName}, LastName: {user.LastName}, Email: {user.Email}, Password: {user.Password}");
-            }
-        }
-
-        public List<UserDTO> LoadData()
-        {
-            return LoadUserList();
-        }
-
+        // loadUserList() will get load up the CSV file to get the user data when authenticated
         public List<UserDTO> LoadUserList()
         {
             List<UserDTO> userList = new List<UserDTO>();
@@ -84,11 +72,6 @@ namespace healthcare_system.service
             }
 
             return userList;
-        }
-
-        public void addUser(int role)
-        {
-            
         }
     }
 }
