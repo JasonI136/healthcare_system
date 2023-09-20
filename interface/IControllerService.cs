@@ -9,6 +9,7 @@ namespace healthcare_system
 {
     public interface IControllerService
     {
+        // Interface for Controller Services
         Boolean login();
         void returnToMenu();
         void CheckIfLoggedIn();

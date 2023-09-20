@@ -8,6 +8,7 @@ namespace healthcare_system
 {
     public interface IAdminService
     {
+        // Interface for Admin Services
         void processUserInput(int userInput, int UserId);
         void listAllDoctor(int UserId);
         void checkDoctorDetails(int UserId);

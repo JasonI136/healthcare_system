@@ -9,6 +9,7 @@ namespace healthcare_system
 {
     public interface IUserService
     {
+        // Interface for User Services
         UserDTO AuthenticateUser(int userId, string password);
         List<UserDTO> LoadUserList();
     }

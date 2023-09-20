@@ -8,6 +8,7 @@ namespace healthcare_system
 {
     public interface IDoctorService
     {
+        // Interface for Doctor Services
         void processUserInput(int userInput, int UserId);
         void listDoctorDetails(int userInput);
         void listPatients(int userInput);
