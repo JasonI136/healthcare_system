@@ -12,3 +12,5 @@ user_id,role,firstname,lastname,email,password,address,phone,description
 10003,doctor,Tony,Stark,tony@mail.com,1234,2 Gibbs Street Miranda,041234567,nothing,
 10004,doctor,Jim,Beam,jimb@gmail.com,1234,gog,041234567,,
 20006,patient,John,bob,as,1234,sdg,123,1234,
+10005,doctor,Jason,Immanuel,jason.immanuel@mail.com,1234,Building 2 UTS Central,0412345678,cool guy,
+20007,patient,Wilson,Immanuel,wilson.immanuel@mail.com,1234,Cool Street 1 Town Hall,041234567,sick guy,

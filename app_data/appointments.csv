@@ -7,3 +7,4 @@ doctor_id,patient_id,date,description
 10002,20000,16/09/2023,eye check
 10000,20000,13/09/2023,Booked Appointment
 10004,20006,16/09/2023,"Booked Appointment"
+10004,20000,16/09/2023,"Booked Appointment"

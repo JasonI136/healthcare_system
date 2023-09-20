@@ -18,7 +18,8 @@ namespace healthcare_system.service
         IDoctorService doctorService;
         IPatientService patientService;
         IAdminService adminService;
-        
+
+        // Initiate Constructor
         public ControllerService(IMenuService menuService, IDoctorService doctorService, IPatientService patientService, IAdminService adminService)
         {
             this.menuService = menuService;
@@ -48,7 +49,7 @@ namespace healthcare_system.service
 
                     if (response.ToLower() != "n")
                     {
-                        Console.Clear(); // Clear the console
+                        Console.Clear();
                     }
                     else
                     {
@@ -64,15 +65,14 @@ namespace healthcare_system.service
             this.menuService.DisplayHeader("Login Page");
             UserService userService = new UserService();
 
-            // Variables
             int user_id;
             string password = "";
 
             Console.WriteLine();
             Console.WriteLine("Welcome to the UTS Healthcare System, please input your Credentials:");
             Console.WriteLine();
-
             Console.Write("User ID: ");
+            
             // Parse the user_id from the console input
             if (!int.TryParse(Console.ReadLine(), out user_id))
             {
@@ -85,7 +85,8 @@ namespace healthcare_system.service
             while (true)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
-                // Backspace Should Not Work
+                
+                // BACKSPACE and ENTER Should not work 
                 if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
                 {
                     password += key.KeyChar;
@@ -115,7 +116,7 @@ namespace healthcare_system.service
                 Console.WriteLine();
                 Console.WriteLine("Successful Login Welcome, " + authenticatedUser.FirstName +  " " + authenticatedUser.LastName);
                 Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();  // This will pause until a key is pressed
+                Console.ReadKey();
                 return true;
             }
             else
@@ -125,6 +126,7 @@ namespace healthcare_system.service
             }
         }
 
+        // returnToMenu() handles the menu navigation for all users
         public void returnToMenu()
         {
             int userOption;
@@ -165,6 +167,7 @@ namespace healthcare_system.service
             }
         }
 
+        // getMenuOption() handles the option when in the main menu after being signed in
         public int getMenuOption()
         {
             int menuOption;
@@ -178,10 +181,12 @@ namespace healthcare_system.service
 
                 switch (isInteger)
                 {
+                    // OPTION 9: Logout
                     case true when menuOption == 9:
                         logout();
                         return -1;
 
+                    // OPTION 0: Exit the entire application
                     case true when menuOption == 0:
                         Environment.Exit(0);
                         return -1; 
@@ -199,9 +204,6 @@ namespace healthcare_system.service
             }
         }
 
-
-
-
         public void logout()
         {
             // If authenticatedUser has a role assigned
@@ -213,13 +215,5 @@ namespace healthcare_system.service
                 CheckIfLoggedIn(); // Call CheckIfLoggedIn function
             }
         }
-
-
-        public void exitSystem()
-        {
-            throw new NotImplementedException();
-        }
-
-
     }
 }

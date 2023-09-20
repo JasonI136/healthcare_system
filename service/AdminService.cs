@@ -23,6 +23,7 @@ namespace healthcare_system.service
             this.userCSVFilePath = Path.Combine(projectDirectory, "healthcare_system", "app_data", "user.csv");
         }
 
+        // This function will retrieve the user option and continue it to the appropriate function
         public void processUserInput(int userInput, int UserId)
         {
             switch (userInput)
@@ -59,9 +60,10 @@ namespace healthcare_system.service
             Console.Clear();
             menuService.DisplayHeader("List All Doctors:");
 
+            // Load and find user
             List<UserDTO> userList = userService.LoadUserList();
-
             UserDTO user = userList.Find(u => u.UserId == signedInId);
+            
             if (user != null)
             {
                 List<UserDTO> doctorList = userList.Where(u => string.Equals(u.Role, "Doctor", StringComparison.OrdinalIgnoreCase)).ToList();
@@ -92,7 +94,6 @@ namespace healthcare_system.service
             Console.ReadLine();
         }
 
-
         /* Option 2: Check Doctor Details
         * Prompts the user for an ID and prints the details of the doctor whose ID it belongs to, to the console line by line
         */
@@ -101,9 +102,10 @@ namespace healthcare_system.service
             Console.Clear();
             menuService.DisplayHeader("Check Doctor Details:");
 
+            // Load and find user
             List<UserDTO> userList = userService.LoadUserList();
-
             UserDTO user = userList.Find(u => u.UserId == signedInId);
+            
             if (user != null)
             {
                 Console.WriteLine("Enter the Doctor ID to retrieve details (or press ENTER to exit):");
@@ -144,7 +146,6 @@ namespace healthcare_system.service
             Console.ReadKey();
         }
 
-
         /* Option 3: List All Patients
         * Lists a shorthand version of every patient contained in the system to the console
         */
@@ -153,9 +154,10 @@ namespace healthcare_system.service
             Console.Clear();
             menuService.DisplayHeader("List All Patients:");
 
+            // Load and find user
             List<UserDTO> userList = userService.LoadUserList();
-
             UserDTO user = userList.Find(u => u.UserId == signedInId);
+            
             if (user != null)
             {
                 List<UserDTO> patientList = userList.Where(u => string.Equals(u.Role, "Patient", StringComparison.OrdinalIgnoreCase)).ToList();
@@ -194,9 +196,10 @@ namespace healthcare_system.service
             Console.Clear();
             menuService.DisplayHeader("Check Patient Details:");
 
+            // Load and find user
             List<UserDTO> userList = userService.LoadUserList();
-
             UserDTO user = userList.Find(u => u.UserId == signedInId);
+            
             if (user != null)
             {
                 Console.WriteLine("Enter the Patient ID to retrieve details (or press ENTER to exit):");
@@ -205,8 +208,11 @@ namespace healthcare_system.service
                 {
                     return;
                 }
+
+                // Parsing input to an integer to check for valid patient ID
                 if (int.TryParse(input, out int patientId))
                 {
+                    // Searching for a patient with the entered ID and a role of 'Patient'
                     UserDTO patient = userList.Find(u => u.UserId == patientId && string.Equals(u.Role, "Patient", StringComparison.OrdinalIgnoreCase));
                     if (patient != null)
                     {
@@ -244,10 +250,8 @@ namespace healthcare_system.service
             Console.Clear();
             menuService.DisplayHeader("Add New Doctor:");
 
-            // Load the list of users from the user service
+            // Load and find user
             List<UserDTO> userList = userService.LoadUserList();
-
-            // Get the list of all doctors
             var doctorList = userList.Where(u => u.Role.ToLower() == "doctor").ToList();
 
             Console.WriteLine("Please enter the following details to add a new doctor:");
@@ -328,9 +332,6 @@ namespace healthcare_system.service
             Console.ReadKey();
         }
 
-
-
-
         /* Option 6: Add New Patient
         * Prompts the user for all the necessary data needed to generate a new Patient and add it to the system
         */
@@ -339,10 +340,8 @@ namespace healthcare_system.service
             Console.Clear();
             menuService.DisplayHeader("Add New Patient:");
 
-            // Load the list of users from the user service
+            // Load and find user
             List<UserDTO> userList = userService.LoadUserList();
-
-            // Get the list of all doctors
             var doctorList = userList.Where(u => u.Role.ToLower() == "patient").ToList();
 
             Console.WriteLine("Please enter the following details to add a new patient:");

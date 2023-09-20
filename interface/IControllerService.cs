@@ -14,7 +14,5 @@ namespace healthcare_system
         void CheckIfLoggedIn();
         int getMenuOption();
         void logout();
-        void exitSystem();
-        
     }
 }
